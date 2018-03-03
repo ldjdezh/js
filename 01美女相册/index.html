@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>美女相册</title>
+</head>
+
+<body>
+    <div id="imagegallery">
+        <a href="images/1.jpg" title="美女A">
+            <img src="images/1-small.jpg" alt="" width="100px">
+        </a>
+        <a href="images/2.jpg" title="美女B">
+            <img src="images/2-small.jpg" alt="" width="100px">
+        </a>
+        <a href="images/3.jpg" title="美女C">
+            <img src="images/3-small.jpg" alt="" width="100px">
+        </a>
+        <a href="images/4.jpg" title="美女D">
+            <img src="images/4-small.jpg" alt="" width="100px">
+        </a>
+    </div>
+    <img id="image" width="450px" src="images/placeholder.png"></img>
+    <p id="des">选择一张图片</p>
+
+    <script>
+        // 2018年3月3日 08点55分
+
+        // 先获得要操作的对象
+        var imagegallery = document.getElementById('imagegallery');
+        var links = imagegallery.getElementsByTagName('a');
+        var image = document.getElementById('image');
+        var des = document.getElementById('des');
+
+        // 循环给a标签注册事件
+        for(var i=0;i<links.length;i++) {
+            var link = links[i];
+
+            link.onclick = function() {
+                image.src = this.href;
+                des.innerText = this.title;
+
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
