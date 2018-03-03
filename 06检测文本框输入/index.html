@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>检测文本框输入</title>
+</head>
+
+<body>
+    用户名：
+    <input type="text" name="" id="name">
+    <br> 密码：
+    <input type="password" name="" id="pwd">
+    <br>
+    <input type="button" value="登录" id="btnLogin">
+
+    <script>
+        var btnLogin = document.getElementById('btnLogin');
+
+        btnLogin.onclick = function () {
+            var txtname = document.getElementById('name');
+            if (txtname.value.length < 3 || txtname.value.length > 6) {
+                txtname.style.backgroundColor = 'yellow';
+                return false;
+            } else {
+                txtname.style.backgroundColor = '';
+            }
+
+            var pwd = document.getElementById('pwd');
+
+            if (pwd.value.length < 3 || pwd.value.length > 6) {
+                pwd.style.backgroundColor = 'yellow';
+                return false;
+            } else {
+                pwd.style.backgroundColor = '';
+            }
+        }
+    </script>
+</body>
+
+</html>

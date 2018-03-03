@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>切换图片</title>
+</head>
+
+<body>
+    <input id="btn" type="button" value="切换图片">
+    <br>
+    <img id="img" src="images/0.jpg" alt="">
+
+    <script>
+        var arr = [
+            'images/0.jpg',
+            'images/1.jpg',
+            'images/2.jpg',
+            'images/3.jpg',
+            'images/4.jpg',
+            'images/5.jpg',
+            'images/6.jpg',
+            'images/7.jpg',
+            'images/8.jpg',
+            'images/9.jpg'
+        ]
+
+        var btn = document.getElementById('btn');
+        var img = document.getElementById('img');
+
+        var index = 0;
+
+        btn.onclick = function() {
+            index++;
+            img.src = arr[index];
+
+            if(index === arr.length-1) {
+                index = -1;
+            }
+        }
+    </script>
+</body>
+
+</html>

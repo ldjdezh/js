@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用下拉框</title>
+</head>
+<body>
+    <select id="sel">
+        <option>请随机选择</option>
+        <option>回锅肉盖饭</option>
+        <option>宫爆鸡丁盖饭</option>
+        <option>饺子</option>
+        <option>炒饼</option>
+        <option>地三鲜盖饭</option>
+    </select>
+    <input type="button" value="随机" id="btn">
+
+    <script src="common.js"></script>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function() {
+            var sel = document.getElementById('sel');
+            var options = sel.getElementsByTagName('option');
+            var index = getRandom(1,options.length-1);
+            options[index].selected = true;
+        }
+    </script>
+</body>
+</html>
