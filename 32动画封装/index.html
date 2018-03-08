@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画封装</title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+
+            margin-top: 150px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="button" value="动画500" id="btn">
+    <input type="button" value="动画1000" id="btn1">
+
+    <div id="box"></div>
+    <div id="box1"></div>
+
+    <script>
+        var btn = document.getElementById('btn');
+        var btn1 = document.getElementById('btn1');
+        var box = document.getElementById('box');
+        var box1 = document.getElementById('box1');
+
+        btn.onclick = function () {
+            animate(box, 500, function () {
+                animate(box1, 500);
+            });
+        }
+
+        btn1.onclick = function () {
+            animate(box1, 1000, function () {
+                animate(box, 1000);
+            });
+        }
+
+        function animate(element, target, callback) {
+            //如果有定时器，先取消定时器
+            if (element.timeid) {
+                clearInterval(element.timeid);
+            }
+
+            element.timeid = setInterval(function () {
+                var step = 10;
+
+                var current = element.offsetLeft;
+
+                //如果当前坐标大于目标坐标，步数为负
+                if (current > target) {
+                    step = -Math.abs(step);
+                }
+
+                //如果当前坐标和目标坐标小于等于步数
+                if (Math.abs(current - target) <= Math.abs(step)) {
+                    element.style.left = target + 'px';
+                    clearInterval(element.timeid);
+
+                    if (callback) {
+                        callback();
+                    }
+                    return;
+                }
+
+                current += step;
+
+                element.style.left = current + 'px';
+
+            }, 30)
+        }
+    </script>
+</body>
+
+</html>

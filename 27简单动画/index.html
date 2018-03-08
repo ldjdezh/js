@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单动画</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="button" value="动画" id="btn">
+    <div id="box"></div>
+
+    <script>
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+
+        btn.onclick = function() {
+            var timeid = setInterval(function() {
+                var current = box.offsetLeft;
+
+                current += 5;
+
+                if(current >= 500) {
+                    box.style.left = '500px';
+                    clearInterval(timeid);
+                    return;
+                }
+
+                box.style.left = current+'px';
+            },30)
+        }
+    </script>
+</body>
+
+</html>

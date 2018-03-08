@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取鼠标在div中的坐标</title>
+
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            margin: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+
+    <script>
+        var box = document.getElementById('box');
+        box.onmousemove = function(e) {
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+
+            console.log('x :'+x +'  y :'+y);
+        }
+    </script>
+</body>
+
+</html>

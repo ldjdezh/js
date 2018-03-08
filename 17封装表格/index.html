@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>封装表格</title>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+
+    <script>
+        var box = document.getElementById('box');
+
+        var bodyData = [
+            { name: 'zs', subject: '语文', score: 100 },
+            { name: 'ls', subject: '数学', score: 80 },
+            { name: 'sdb', subject: '体育', score: 0 },
+            { name: 'gw', subject: '英语', score: 59 },
+            { name: 'bzr', subject: '数学', score: 50 }
+        ];
+
+        var headData = ['姓名', '科目', '成绩', '操作'];
+
+        createTable(box, headData, bodyData);
+
+        function createTable(box, headData, bodyData) {
+            var table = createHead(box, headData);
+            createBody(table, bodyData);
+        }
+
+        function createHead(box, headData) {
+            var table = document.createElement('table');
+            box.appendChild(table);
+
+            var tr = document.createElement('tr');
+            table.appendChild(tr);
+
+            headData.forEach(function (item) {
+                var td = document.createElement('td');
+                tr.appendChild(td);
+                var text = document.createTextNode(item);
+                td.appendChild(text);
+            })
+
+            return table;
+        }
+
+        function createBody(table, bodyData) {
+            bodyData.forEach(function (item) {
+                var tr = document.createElement('tr');
+                table.appendChild(tr);
+                for (var key in item) {
+                    var td = document.createElement('td');
+                    tr.appendChild(td);
+                    var text = document.createTextNode(item[key]);
+                    td.appendChild(text);
+                }
+
+                var td = document.createElement('td');
+                tr.appendChild(td);
+                var a = document.createElement('a');
+                td.appendChild(a);
+                a.href = 'javascript:void(0)';
+                a.innerText = '删除';
+                a.onclick = linkClick;
+            })
+        }
+
+        function linkClick() {
+            var tr = this.parentNode.parentNode;
+            var table = tr.parentNode;
+
+            table.removeChild(tr);
+        }
+    </script>
+</body>
+
+</html>

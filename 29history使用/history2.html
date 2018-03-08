@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>history2</title>
+</head>
+<body>
+    <a href="history1.html">history1</a>
+    <input type="button" value="后退" id="btn">
+
+    <script>
+        var btn = document.getElementById('btn');
+
+        btn.onclick = function() {
+            history.back();
+        }
+    </script>
+</body>
+</html>
